@@ -10,14 +10,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/")
 public class HomeController {
 
     //@CrossOrigin("http://127.0.0.1:5500")
-    @GetMapping
+    @GetMapping("home")
     public ResponseEntity<Map<String,Object>> home() {
         Map<String,Object> json = new HashMap<>();
         json.put("status","success");
+        return ResponseEntity.status(HttpStatus.OK).body(json);
+    }
+
+    @GetMapping("secure")
+    public ResponseEntity<Map<String,Object>> secure() {
+        Map<String,Object> json = new HashMap<>();
+        json.put("status","success");
+        json.put("msg","Hello, secure page");
         return ResponseEntity.status(HttpStatus.OK).body(json);
     }
 }
